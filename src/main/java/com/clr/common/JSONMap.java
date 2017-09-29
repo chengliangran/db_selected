@@ -1,13 +1,41 @@
 package com.clr.common;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.StringTokenizer;
+import java.util.*;
 
 /**
  * Created by Administrator on 2017/9/27 0027.
  */
 public class JSONMap {
-    Map<String ,Object> jsonMap=new HashMap<String,Object>();
+    Map<String ,Object> map=new HashMap<String,Object>();
+
+    List<String> list=new ArrayList();
+
+    public void put(String key,Object val){
+        if (val!=null){
+            map.put(key,val);
+        }else {
+            list.add(key);
+        }
+    }
+
+    public Object getObject(String key){
+       return map.get(key);
+    }
+
+    public int getInt(String key){
+        return (Integer) map.get(key);
+    }
+
+    public float getFloat(String key){
+        return (Float) map.get(key);
+    }
+
+    public String getString(String key){
+        return (String)map.get(key);
+    }
+
+    public Map<String,Object> getMap(){
+        return  map;
+    }
 
 }
