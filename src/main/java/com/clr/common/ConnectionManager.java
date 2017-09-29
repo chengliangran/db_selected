@@ -11,6 +11,7 @@ public class ConnectionManager {
         DruidPlugin dp=new DruidPlugin(Config.HOST,Config.USER,Config.PASSWORD);
         ActiveRecordPlugin arp=new ActiveRecordPlugin(dp);
         dp.start();
+        System.out.println();
 
      }
 
