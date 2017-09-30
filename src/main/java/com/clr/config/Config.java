@@ -1,4 +1,4 @@
-package com.clr.common;
+package com.clr.config;
 
 /**
  * Created by Administrator on 2017/9/27 0027.

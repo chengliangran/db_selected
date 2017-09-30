@@ -6,16 +6,13 @@ import java.util.*;
  * Created by Administrator on 2017/9/27 0027.
  */
 public class JSONMap {
+
     Map<String ,Object> map=new HashMap<String,Object>();
 
     List<String> list=new ArrayList();
 
     public void put(String key,Object val){
-        if (val!=null){
             map.put(key,val);
-        }else {
-            list.add(key);
-        }
     }
 
     public Object getObject(String key){

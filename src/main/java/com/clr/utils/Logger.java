@@ -1,4 +1,4 @@
-package com.clr.common;
+package com.clr.utils;
 
 import com.alibaba.fastjson.JSONObject;
 
@@ -6,7 +6,7 @@ import com.alibaba.fastjson.JSONObject;
  * Created by Administrator on 2017/9/28 0028.
  */
 public class Logger {
-    public static void print(JSONObject object){
+    public static void logJSON(JSONObject object){
         System.out.println(formatJson(object.toJSONString()));
 
     }

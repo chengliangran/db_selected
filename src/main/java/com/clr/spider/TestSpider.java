@@ -5,7 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.clr.common.ConnectionManager;
 import com.clr.common.JSONMap;
 import com.clr.common.JSONParser;
-import com.clr.common.Logger;
+import com.clr.utils.Logger;
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Record;
 
@@ -14,7 +14,6 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -37,7 +36,7 @@ public class TestSpider {
             byte[] buf=new byte[4022];
             inputStream.read(buf);
             JSONObject object= JSON.parseObject(new String(buf,0,buf.length).trim());
-            Logger.print(object);
+            Logger.logJSON(object);
 
 //          测试自己写的json类
             JSONParser jsonParser=new JSONParser();
