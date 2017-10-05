@@ -1,4 +1,4 @@
-package com.clr.spider;
+package com.clr.spider.api;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -7,33 +7,31 @@ import com.clr.common.JSONParser;
 import com.clr.config.SpiderConfig;
 import com.clr.utils.Logger;
 import com.jfinal.plugin.activerecord.Db;
+import com.jfinal.plugin.activerecord.Record;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Map;
 
-/**
- * Created by Administrator on 2017/9/29 0029.
- */
-public class DoubanBookAPIer {
+public class BasicAPIer{
 
-    public void queryBooks() {
+    public void queryByAPI(String path,String sql,float interval) {
         //设置地址
-        int j=Db.findFirst("select * from book order by id desc").getInt("id");
-        for (int i=j+1;i<2000000;i++) {
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            String path = SpiderConfig.DB_BOOK_PREFIX+i;
+        int lastId=1000000;
+        Record r= Db.findFirst(sql);
+        if (r!=null){
+            lastId=r.getInt("id");
+        }
+        for (int i=lastId+1;i<2000000;i++) {
+            //设置间隔
+            queryInterval(interval);
+            String complteddPath = path+i;
             URL url=null;
             try {
-                 url = new URL(path);
+                url = new URL(complteddPath);
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
@@ -41,7 +39,7 @@ public class DoubanBookAPIer {
             //设置查询的工具connection
             URLConnection connection=null;
             try {
-                 connection = url.openConnection();
+                connection = url.openConnection();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -77,9 +75,18 @@ public class DoubanBookAPIer {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-
         }
     }
 
- }
+    //
+    private void queryInterval(float interval) {
+        float per=60/interval;
+        int perTime= (int) (per*1000);
+        try {
+            Thread.sleep(perTime);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+}

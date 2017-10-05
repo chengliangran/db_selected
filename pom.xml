@@ -52,17 +52,14 @@
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>6.0.2</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/c3p0/c3p0 -->
+         <!-- https://mvnrepository.com/artifact/c3p0/c3p0 -->
         <dependency>
             <groupId>c3p0</groupId>
             <artifactId>c3p0</artifactId>
             <version>0.9.1.2</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/us.codecraft/webmagic-core -->
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
 
 
     </dependencies>
