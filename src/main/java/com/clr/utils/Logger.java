@@ -2,10 +2,30 @@ package com.clr.utils;
 
 import com.alibaba.fastjson.JSONObject;
 
+import java.io.*;
+
 /**
  * Created by Administrator on 2017/9/28 0028.
  */
 public class Logger {
+
+    String filename=null;
+
+    public Logger() {
+    }
+
+    public Logger(String filename) {
+        this.filename = filename;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
+
     public static void logJSON(JSONObject object){
         System.out.println(formatJson(object.toJSONString()));
 
@@ -65,6 +85,123 @@ public class Logger {
     private static void addIndentBlank(StringBuilder sb, int indent) {
         for (int i = 0; i < indent; i++) {
             sb.append('\t');
+        }
+    }
+
+    public static void logLocalText(String text,boolean fla){
+        String filename="D:\\db_spider.txt";
+        File file=new File(filename);
+        if (!file.exists()){
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        FileOutputStream fis=null;
+        try {
+             fis=new FileOutputStream(file,fla);
+            fis.write(text.getBytes());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                if (fis!=null){
+                    fis.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void logLocalText3(String text,boolean fla){
+        String filename1=filename;
+        File file=new File(filename1);
+        if (!file.exists()){
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        FileOutputStream fis=null;
+        try {
+            fis=new FileOutputStream(file,fla);
+            fis.write(text.getBytes());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                if (fis!=null){
+                    fis.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+    public static void logLocalText1(String text,boolean fla){
+        String filename="D:\\record_create.txt";
+        File file=new File(filename);
+        if (!file.exists()){
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        FileOutputStream fis=null;
+        try {
+            fis=new FileOutputStream(file,fla);
+            fis.write(text.getBytes());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                if (fis!=null){
+                    fis.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static void logLocalText2(String text,boolean fla){
+        String filename="D:\\tag_create.txt";
+        File file=new File(filename);
+        if (!file.exists()){
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        FileOutputStream fis=null;
+        try {
+            fis=new FileOutputStream(file,fla);
+            fis.write(text.getBytes());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                if (fis!=null){
+                    fis.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

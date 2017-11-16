@@ -1,10 +1,8 @@
 package com.clr.spider.api;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import com.clr.common.JSONMap;
-import com.clr.common.JSONParser;
-import com.clr.config.SpiderConfig;
+import com.clr.utils.JSONMap;
+import com.clr.utils.JSONObject1;
 import com.clr.utils.Logger;
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Record;
@@ -63,9 +61,9 @@ public class BasicAPIer{
                 if (jsonStr.contains("average\":\"0.0\"")||!jsonStr.contains("\"isbn13\":\"9787")){
                 }
                 else {
-                    JSONObject object= JSON.parseObject(jsonStr.trim());
+                    com.alibaba.fastjson.JSONObject object= JSON.parseObject(jsonStr.trim());
                     Logger.logJSON(object);
-                    JSONMap map=new JSONParser(object).getMap();
+                    JSONMap map=new JSONObject1(object).getMap();
                     for (Map.Entry<String,Object> entry : map.getMap().entrySet()) {
                         System.out.println(entry.getKey()+"---"+entry.getValue());
                     }

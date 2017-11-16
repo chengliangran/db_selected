@@ -10,13 +10,14 @@ import com.jfinal.plugin.druid.DruidPlugin;
  * Created by Administrator on 2017/9/27 0027.
  */
 public class ConnectionManager {
-    public static void initConnection(){
+    public static DruidPlugin initConnection(){
+        System.out.println("####启动数据库");
         DruidPlugin dp=new DruidPlugin(Config.HOST,Config.USER,Config.PASSWORD, Config.driverClass);
         dp.start();
         ActiveRecordPlugin arp=new ActiveRecordPlugin(dp);
         arp.start();
         System.out.println();
-
+        return dp;
      }
 
     public static void main(String[] args) {

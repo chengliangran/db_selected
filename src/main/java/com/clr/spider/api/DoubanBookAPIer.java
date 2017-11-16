@@ -7,7 +7,7 @@ import com.clr.config.SpiderConfig;
  */
 public class DoubanBookAPIer extends BasicAPIer implements Runnable{
 
-    String booksUrl=SpiderConfig.DB_BOOK_PREFIX;
+    String booksUrl= SpiderConfig.DB_BOOK_PREFIX;
 
     float interval=10;
 
@@ -21,4 +21,11 @@ public class DoubanBookAPIer extends BasicAPIer implements Runnable{
     public void run() {
         queryByAPI(booksUrl,sql,interval);
     }
+
+    public static void main(String[] args) {
+        for (int i = 0; i < 20; i++) {
+            String arg = args[i];
+
+        }
+     }
 }
