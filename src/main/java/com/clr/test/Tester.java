@@ -28,6 +28,7 @@ class Repo{
     public synchronized static void addProduct(String name){
         for (int i = 0; i < 10; i++) {
             System.out.println("线程名为"+name+"线程正在执"+i+"次操作 ");
+            System.out.println("ceshi");
         }
     }
 }
